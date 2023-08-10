@@ -28,33 +28,33 @@ int registro(){ //Função responsável por cadastrar os usuários no sistema
 	fclose(file); //Fecha o arquivo
 	
 	printf("Digite o nome a ser cadastrado: "); //Coletando informação para cadastro
-	scanf("%s",nome); //%s refere-se à string Nome
+	scanf("%s",nome); //Refere-se à string Nome
 	
-	file = fopen(arquivo, "a"); //Adiciona caracteres dentro do arquivo
-	fprintf(file,nome); //Salva o valor da variável nome
-	fclose(file); //Fecha o arquivo
+	file = fopen(arquivo, "a");
+	fprintf(file,nome);
+	fclose(file);
 	
-	file = fopen(arquivo, "a"); //Adiciona caracteres dentro do arquivo
-	fprintf(file, " "); //Caracter espaço inserido
-	fclose(file); //Fecha o arquivo
+	file = fopen(arquivo, "a");
+	fprintf(file, " ");
+	fclose(file);
 	
 	printf("Digite o sobrenome a ser cadastrado: "); //Coletando informações para cadastro
 	scanf("%s",sobrenome); //%s refere-se à string Sobrenome
 	
-	file = fopen(arquivo, "a"); //Adiciona caracteres dentro do arquivo
-	fprintf(file,sobrenome); //Salva o valor da variável sobrenome
-	fclose(file); //Fecha o arquivo
+	file = fopen(arquivo, "a");
+	fprintf(file,sobrenome);
+	fclose(file);
 	
-	file = fopen(arquivo, "a"); //Adiciona caracteres dentro do arquivo
-	fprintf(file, ", "); //Caracter vírgula inserido
-	fclose(file); //Fecha o arquivo
+	file = fopen(arquivo, "a");
+	fprintf(file, ", ");
+	fclose(file);
 	
 	printf("Digite o cargo a ser cadastrado: "); //Colentando informação para cadastro
 	scanf("%s",cargo); //%s refere-se à string Cargo
 	
-	file = fopen(arquivo, "a"); //Adiciona caracteres dentro do arquivo
-	fprintf(file,cargo); //Salva o valor da variável cargo
-	fclose(file); //Fecha o arquivo
+	file = fopen(arquivo, "a");
+	fprintf(file,cargo);
+	fclose(file);
 	
 	system("pause"); //Pausa o programa
 }
@@ -78,10 +78,11 @@ int consulta(){ //Módulo de consulta
 	while(fgets(conteudo, 200, file) != NULL){ //Enquanto os dados de consulta forem diferentes de "nulo"
 		printf("\nEssas são as informações do usuário: "); //Mostra as informações do usuário
 		printf("%s", conteudo); //%s refere-se à string Conteúdo
-		printf("\n\n"); //Pula linha
+		printf("\n\n");
+		fclose(file);
 	}
 	
-	system("pause"); //Pausa o programa
+	system("pause");
 }
 
 int deletar(){ //Módulo de exclusão de arquivos/usuários
@@ -92,12 +93,13 @@ int deletar(){ //Módulo de exclusão de arquivos/usuários
 	
 	remove(cpf); //Remove permanentemente o arquivo CPF
 	
-	FILE *file; //Cria/abre o arquivo
-	file = fopen(cpf,"r"); //Leitura do arquivo
+	FILE *file;
+	file = fopen(cpf,"r");
 	
 	if(file == NULL){ //Se o arquivo for nulo/inexistente
-		printf("Usuário deletado com sucesso. O usuário não se encontra no sistema!\n"); //Imprime esta informação
-		system("pause"); //Pausa o programa
+		printf("Usuário deletado com sucesso. O usuário não se encontra no sistema!\n");
+		fclose(file);
+		system("pause");
 	}
 }
 
@@ -117,7 +119,7 @@ int main(){ //Módulo Menu
 		printf("Escolha a opção desejada no menu: \n\n");
 		printf("\t1 - Registrar nomes\n");
 		printf("\t2 - Consultar nomes\n");
-		printf("\t3 - Deletar nomes\n\n");
+		printf("\t3 - Deletar nomes\n");
 		printf("\t4 - Sair do sistema\n\n");
 		printf("Opção: ");//Fim do menu
 	
